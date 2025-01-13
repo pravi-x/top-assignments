@@ -17,18 +17,6 @@ function getComputerChoice() {
     return choices[choice];
 }
 
-function getHumanChoiceConsole(){
-    do{
-        let choice = window.prompt("Rock, Paper, Scissors ... GO").trim().toLowerCase();
-        if (!choice) {
-            alert("Cancelled by user.");
-            return null;
-        }
-        if (choices.includes(choice)){
-            return choice;
-        }
-    } while (true)
-}
 
 function getHumanChoice() {
     const buttons = document.querySelectorAll("#container-rps-player button");
@@ -63,12 +51,17 @@ function playRound(humanChoice, computerChoice) {
 
 function playGame(humanChoice){
 
-    document.querySelector("#container-rps-player p").textContent = `Player: ${humanChoice}`;
+    document.querySelector("#container-rps-player p").textContent = `👤: ${humanChoice}`;
     let computerChoice = getComputerChoice();
-    document.querySelector("#container-rps-computer p").textContent = `Computer: ${computerChoice}`;
+    document.querySelector("#container-rps-computer p").textContent = `🤖: ${computerChoice}`;
 
     let round = playRound(humanChoice, computerChoice)
     score[round] +=1
 
-    document.querySelector("#container-result p").textContent = `Human: ${score.human}, Computer: ${score.computer}, Tie: ${score.tie}`;
+    document.querySelector("#container-result p").textContent = `👤: ${score.human}  🤖: ${score.computer}  🤝: ${score.tie}`;
 }
+
+// Ensure the DOM is fully loaded before attaching event listeners
+document.addEventListener("DOMContentLoaded", () => {
+    getHumanChoice();
+});

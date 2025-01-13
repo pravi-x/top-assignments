@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: aquamarine    ;
+}
+
+
+#container-main {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+}
+
+#container-rps-player, #container-rps-computer, #container-result {
+    margin: 20px 0;
+    font-size: 35px;
+}
+
+
+
+#container-result p {
+    font-weight: bold;
+    color: #444;
+    font-size: 35px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f2f2f2;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+
+
+
+#container-main {
+    margin: 50px auto;
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#container-main:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 65px;
+    color: #2c3e50;  /* Σκούρο χρώμα για καλύτερη αντίθεση με το aquamarine */
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);  /* Απαλή σκιά για το κείμενο */
+    letter-spacing: 2px;  /* Προσθήκη ελαφριάς απόστασης μεταξύ των γραμμάτων */
+}
+h1:hover {
+    color: #fff;
+}
+
+
+
+button {
+    margin: 10px;
+    padding: 12px 25px;
+    font-size: 60px;
+    border: none;
+    background-color: #f0f0f0;
+    color: #333;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+}
