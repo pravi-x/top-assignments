@@ -1,7 +1,13 @@
 
+// Global 
 const choices = ["rock", "paper", "scissors"];
+const score = {
+    human: 0,
+    computer: 0,
+    tie: 0
+};
 
-
+// Game logic
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
@@ -11,7 +17,7 @@ function getComputerChoice() {
     return choices[choice];
 }
 
-function getHumanChoice(){
+function getHumanChoiceConsole(){
     do{
         let choice = window.prompt("Rock, Paper, Scissors ... GO").trim().toLowerCase();
         if (!choice) {
@@ -22,6 +28,16 @@ function getHumanChoice(){
             return choice;
         }
     } while (true)
+}
+
+function getHumanChoice() {
+    const buttons = document.querySelectorAll("#container-rps-player button");
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const humanChoice = button.id;
+            playGame(humanChoice)
+        });
+    });
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -44,22 +60,15 @@ function playRound(humanChoice, computerChoice) {
 }
 
 
-function playGame(){
-    const score = {
-        human: 0,
-        computer: 0,
-        tie: 0
-    };
-    for (let i = 0; i < 5; i++){
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice();
-        let round = playRound(humanChoice, computerChoice)
-        console.log("C:",computerChoice,"H:",humanChoice,"\t| The winner of the round is: ", round)
-        score[round] +=1
-    }
-    console.log(`Human: ${score.human}, Computer: ${score.computer}, Tie: ${score.tie}`);
-    console.log(score.human === score.computer ? `Tie: ${score.tie}` : `The overall winner is: ${score.human > score.computer ? "Human" : "Computer"}`);
 
+function playGame(humanChoice){
+
+    document.querySelector("#container-rps-player p").textContent = `Player: ${humanChoice}`;
+    let computerChoice = getComputerChoice();
+    document.querySelector("#container-rps-computer p").textContent = `Computer: ${computerChoice}`;
+
+    let round = playRound(humanChoice, computerChoice)
+    score[round] +=1
+
+    document.querySelector("#container-result p").textContent = `Human: ${score.human}, Computer: ${score.computer}, Tie: ${score.tie}`;
 }
-
-playGame()
